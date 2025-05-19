@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faciliter l'apprentissage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffe6f2;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .form-box {
+            background: white;
+            padding: 20px;
+            display: inline-block;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .hidden {
+            display: none;
+        }
+        .options-box {
+            margin-top: 20px;
+        }
+        .option {
+            background-color: #ff3399;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+        .section {
+            margin-top: 20px;
+        }
+        .file-box {
+            margin-top: 20px;
+            background: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .file {
+            margin: 10px;
+        }
+        .comment-box {
+            margin-top: 10px;
+            background-color: #f2f2f2;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color: #ff3399;">Faciliter l'apprentissage</h1>
+    
+    <div class="container">
+        <div id="login" class="form-box">
+            <h2>Connexion</h2>
+            <input type="email" id="login-email" placeholder="Email" required><br><br>
+            <input type="password" id="login-password" placeholder="Mot de passe" required><br><br>
+            <button onclick="login()">Se connecter</button>
+            <p>Pas encore de compte? <a href="#" onclick="showSignup()">Créer un compte</a></p>
+        </div>
+
+        <div id="signup" class="form-box hidden">
+            <h2>Créer un compte</h2>
+            <input type="text" id="nom" placeholder="Nom" required><br><br>
+            <input type="text" id="prenom" placeholder="Prénom" required><br><br>
+            <input type="date" id="date-naissance" required><br><br>
+            <input type="tel" id="phone" placeholder="Numéro de téléphone" required><br><br>
+            <select id="wilaya" required>
+                <option value="">Sélectionner votre wilaya</option>
+                <!-- Add all Algerian provinces here (same as before) -->
+                <option value="">Sélectionner votre wilaya</option>
+                <option value="Adrar">Adrar</option>
+                <option value="Chlef">Chlef</option>
+                <option value="Laghouat">Laghouat</option>
+                <option value="Oum El Bouaghi">Oum El Bouaghi</option>
+                <option value="Batna">Batna</option>
+                <option value="Béjaïa">Béjaïa</option>
+                <option value="Biskra">Biskra</option>
+                <option value="Béchar">Béchar</option>
+                <option value="Blida">Blida</option>
+                <option value="Bouira">Bouira</option>
+                <option value="Tamanrasset">Tamanrasset</option>
+                <option value="Tébessa">Tébessa</option>
+                <option value="Tlemcen">Tlemcen</option>
+                <option value="Tiaret">Tiaret</option>
+                <option value="Tizi Ouzou">Tizi Ouzou</option>
+                <option value="Alger">Alger</option>
+                <option value="Djelfa">Djelfa</option>
+                <option value="Jijel">Jijel</option>
+                <option value="Sétif">Sétif</option>
+                <option value="Saïda">Saïda</option>
+                <option value="Skikda">Skikda</option>
+                <option value="Sidi Bel Abbès">Sidi Bel Abbès</option>
+                <option value="Annaba">Annaba</option>
+                <option value="Guelma">Guelma</option>
+                <option value="Constantine">Constantine</option>
+                <option value="Médéa">Médéa</option>
+                <option value="Mostaganem">Mostaganem</option>
+                <option value="M'Sila">M'Sila</option>
+                <option value="Mascara">Mascara</option>
+                <option value="Ouargla">Ouargla</option>
+                <option value="Oran">Oran</option>
+                <option value="El Bayadh">El Bayadh</option>
+                <option value="Illizi">Illizi</option>
+                <option value="Bordj Bou Arreridj">Bordj Bou Arreridj</option>
+                <option value="Boumerdès">Boumerdès</option>
+                <option value="El Tarf">El Tarf</option>
+                <option value="Tindouf">Tindouf</option>
+                <option value="Tissemsilt">Tissemsilt</option>
+                <option value="El Oued">El Oued</option>
+                <option value="Khenchela">Khenchela</option>
+                <option value="Souk Ahras">Souk Ahras</option>
+                <option value="Tipaza">Tipaza</option>
+                <option value="Mila">Mila</option>
+                <option value="Aïn Defla">Aïn Defla</option>
+                <option value="Naâma">Naâma</option>
+                <option value="Aïn Témouchent">Aïn Témouchent</option>
+                <option value="Ghardaïa">Ghardaïa</option>
+                <option value="Relizane">Relizane</option>
+                <!-- Add more options as necessary -->
+            </select><br><br>
+            <input type="email" id="email-signup" placeholder="Email" required><br><br>
+            <input type="password" id="password-signup" placeholder="Mot de passe" required><br><br>
+            <button onclick="register()">S'inscrire</button>
+            <p>Déjà un compte? <a href="#" onclick="showLogin()">Se connecter</a></p>
+        </div>
+
+        <div id="mainPage" class="hidden">
+            <div class="options-box">
+                <div class="option" onclick="showOptions('3AP')">3AP</div>
+                <div class="option" onclick="showOptions('4AP')">4AP</div>
+                <div class="option" onclick="showOptions('5AP')">5AP</div>
+            </div>
+
+            <div id="optionsContent" class="section hidden">
+                <h2 id="optionTitle"></h2>
+                <div class="option" onclick="showSection('fiches')">Les Fiches</div>
+                <div class="option" onclick="showSection('evaluations')">Les Evaluations</div>
+                <div class="option" onclick="showSection('compositions')">Les Compositions</div>
+                <div class="option" onclick="showSection('plan')">Le Plan Annuel</div>
+                <div class="option" onclick="showSection('diroulement')">Le Diroulement Séquentielle</div>
+                <div class="option" onclick="showSection('comptines')">Les Comptines</div>
+                <div class="option" onclick="showSection('lecons')">Les Leçons</div>
+                <div class="option" onclick="showSection('exercices')">Les Exercices</div>
+            </div>
+
+            <div id="fileUploadSection" class="hidden">
+                <h3>Ajouter un fichier (Image, PDF, Word)</h3>
+                <input type="file" id="file-upload"><br><br>
+                <button onclick="uploadFile()">Ajouter le fichier</button>
+            </div>
+
+            <div id="sectionContent" class="section hidden">
+                <h3 id="sectionTitle"></h3>
+                <textarea id="sectionInput" placeholder="Ajouter des informations..." rows="5" cols="40"></textarea><br><br>
+                <button onclick="saveSection()">Sauvegarder</button>
+                <div id="savedData"></div>
+            </div>
+
+            <div id="commentsSection" class="hidden">
+                <h3>Commentaires</h3>
+                <textarea id="commentInput" placeholder="Ajouter un commentaire..." rows="4" cols="40"></textarea><br><br>
+                <button onclick="addComment()">Ajouter Commentaire</button>
+                <div id="commentsList"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let userRole = ""; // role of user ('admin' or 'user')
+
+        function showSignup() {
+            document.getElementById('login').classList.add('hidden');
+            document.getElementById('signup').classList.remove('hidden');
+        }
+
+        function showLogin() {
+            document.getElementById('signup').classList.add('hidden');
+            document.getElementById('login').classList.remove('hidden');
+        }
+
+        function register() {
+            const email = document.getElementById('email-signup').value;
+            const password = document.getElementById('password-signup').value;
+            const phone = document.getElementById('phone').value;
+            
+            if (email && password && phone) {
+                localStorage.setItem('userEmail', email);
+                localStorage.setItem('userPassword', password);
+                localStorage.setItem('userPhone', phone);
+                localStorage.setItem('userRole', 'user'); // Normal user
+                alert('Compte créé avec succès!');
+                showLogin();
+            } else {
+                alert('Veuillez remplir tous les champs.');
+            }
+        }
+
+        function login() {
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            const storedEmail = localStorage.getItem('userEmail');
+            const storedPassword = localStorage.getItem('userPassword');
+
+            if (email === storedEmail && password === storedPassword) {
+                alert('Connexion réussie!');
+                userRole = localStorage.getItem('userRole'); // Check if user or admin
+                showMainPage();
+            } else {
+                alert('Email ou mot de passe incorrect.');
+            }
+        }
+
+        function showMainPage() {
+            document.getElementById('login').classList.add('hidden');
+            document.getElementById('signup').classList.add('hidden');
+            document.getElementById('mainPage').classList.remove('hidden');
+            
+            if (userRole === 'admin') {
+                document.getElementById('fileUploadSection').classList.remove('hidden');
+            }
+        }
+
+        function showOptions(option) {
+            document.getElementById('optionsContent').classList.remove('hidden');
+            document.getElementById('optionTitle').innerText = option;
+        }
+
+        function showSection(section) {
+            document.getElementById('sectionContent').classList.remove('hidden');
+            document.getElementById('sectionTitle').innerText = 'Ajouter des informations pour ' + section;
+            document.getElementById('commentsSection').classList.remove('hidden');
+        }
+
+        function uploadFile() {
+            // For simplicity, we simulate file upload
+            alert('Fichier téléchargé avec succès!');
+        }
+
+        function addComment() {
+            const comment = document.getElementById('commentInput').value;
+            if (comment) {
+                const commentDiv = document.createElement('div');
+                commentDiv.className = 'comment-box';
+                commentDiv.innerText = comment;
+                document.getElementById('commentsList').appendChild(commentDiv);
+                document.getElementById('commentInput').value = ''; // Clear input
+            } else {
+                alert('Veuillez ajouter un commentaire.');
+            }
+        }
+
+        function saveSection() {
+            const sectionData = document.getElementById('sectionInput').value;
+            if (sectionData) {
+                document.getElementById('savedData').innerText = 'Données sauvegardées: ' + sectionData;
+                alert('Données sauvegardées!');
+            } else {
+                alert('Veuillez ajouter des informations.');
+            }
+        }
+    </script>
+</body>
+</html>
